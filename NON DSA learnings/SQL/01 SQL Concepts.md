@@ -75,27 +75,30 @@ eg: customers whose first name starts with A and last name ends with s
 ## GROUP BY -
 1. Aggregate functions - AVG(), COUNT(), MAX(), MIN(), SUM()
 eg: orders table
-Order_id	Product_id	Product_name	Product_price
-1		3		apple		230
-2		6		banana		150
-3		8		orange		200
-4		3		apple		230
-5		7		mango		350
-6		6		banana		150
+| 	Order_id | 	Product_id | 	Product_name | 	Product_price
+| 	:-----:	 | 	:-----:	 | 	:-----:	 | :-----:	 | 
+| 	1	| 	3	| 	apple	 | 	230	|
+| 	2	| 	6	| 	banana	 | 	150	|
+| 	3	| 	8	| 	orange	 | 	200	|
+| 	4	| 	3	| 	apple	 | 	230	|
+| 	5	| 	7	| 	mango	 |	350	|
+| 	6	| 	6	| 	banana	 | 	150	|
 
 I need the output as
-product_id	product_sum
-3		460
-6		300
-8		200
-7		350
+| 	product_id | 	product_sum	  
+| 	:-----:	 | 	:-----:	 |  
+| 	3	| 	460	|  
+| 	6	| 	300	|  
+| 	8	| 	200	| 
+| 	7	| 	350	|  
 
 SOlution : Select product_id, SUM(product_price) from orders_table GROUP BY product_id
 
-product_id	number_of_items
-3		2
-6		2
-8		1
-7		1
+| 	product_id | 	number_of_items	  
+| 	:-----:	 | 	:-----:	 |  
+| 	3	| 	2	|  
+| 	6	| 	2	|  
+| 	8	| 	1	| 
+| 	7	| 	1	|  
 
 Solution : Select product_id, COUNT(product_id) FROM orders_table GROUP BY product_id
