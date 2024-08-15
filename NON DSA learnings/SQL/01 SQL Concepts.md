@@ -77,8 +77,9 @@ eg: customers whose first name starts with A and last name ends with s
 ## GROUP BY -
 1. Aggregate functions - AVG(), COUNT(), MAX(), MIN(), SUM()
 eg: orders table
-| Order_id | Product_id | Product_name | Product_price |
-|----------|------------|--------------|---------------|
+
+| Order_id  |   Product_id   |  Product_name     |  Product_price    |
+|   :-----: |   :-----:      |      :-----:      |      :-----:      |
 |    1     |      3     |     apple    |      230      |
 |    2     |      6     |    banana    |      150      |
 |    3     |      8     |    orange    |      200      |
