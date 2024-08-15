@@ -97,7 +97,7 @@ I need the output as
 | 	7	| 	350	|  
 
 SOlution : Select product_id, SUM(product_price) from orders_table GROUP BY product_id
-
+                    ^                                                           ^   what ever is there after select has to be  after group by
 | 	product_id | 	number_of_items	  
 | 	:-----:	 | 	:-----:	 |  
 | 	3	| 	2	|  
@@ -106,3 +106,5 @@ SOlution : Select product_id, SUM(product_price) from orders_table GROUP BY prod
 | 	7	| 	1	|  
 
 Solution : Select product_id, COUNT(product_id) FROM orders_table GROUP BY product_id
+                    ^                                                       ^       
+                    these two should always be the same (after select and after group by)
