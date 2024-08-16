@@ -152,9 +152,10 @@ Login Table
 
 ![alt text](image.png)
 
-Result Table 
+Result Table - Select * from Registration Inner Join Login Where Registration.name = Login.name
 
 | 	reg_id | 	name	 |  login_id    |   name 
 | 	:-----:	 | 	:-----:	 |  :-----:	    |  :-----:	 |  
 | 	1	| 	Andrew	|   2       |       Andrew      |
 | 	2	| 	Bob	|       4       |       Bob         |
+
