@@ -114,7 +114,9 @@ Solution : Select product_id, COUNT(product_id) FROM orders_table GROUP BY produ
 * Where cannot be used after GROUP BY clause, so instead use HAVING
 
 1. SELECT company, SUM(sales) WHERE company !="Google" GROUP BY company HAVING SUM(sales)>1000
+
 eg: We are launching a platium service for our most loyal customers. We will assign platinum status to customers that have had 40 or more transaction payments. what customer_ids are eligible for platinum status ?
+
 Solution : Select customer_ids, COUNT(transactions) FROM payments Group by customer_ids Having COUNT(transactions)>=40
 
 ## AS clause 
@@ -129,7 +131,7 @@ Solution : Select customer_ids, COUNT(transactions) FROM payments Group by custo
 
 - Joins allows us to combine two or more tables together
 
-# Inner Join - 
+## Inner Join - 
 Given two tables, Registration table and Login table
 
 Registration Table 
@@ -152,10 +154,74 @@ Login Table
 
 ![alt text](image.png)
 
-Result Table - Select * from Registration Inner Join Login Where Registration.name = Login.name
+Result Table - 
+Select * from Registration Inner Join Login ON Registration.name = Login.name
+
+``` Select * from Registration Join Login ON Registration.name = Login.name (also sives the same result, when no INNER is mentioned after join it is considered to be inner join by default)
+```
 
 | 	reg_id | 	name	 |  login_id    |   name 
 | 	:-----:	 | 	:-----:	 |  :-----:	    |  :-----:	 |  
 | 	1	| 	Andrew	|   2       |       Andrew      |
 | 	2	| 	Bob	|       4       |       Bob         |
 
+
+## Outer Join 
+1. Full Outer join
+2. Left Outer join
+3. Right Outer join
+
+### Full Outer Join 
+
+![alt text](image-1.png)
+
+Registration Table 
+
+| 	reg_id | 	name	  
+| 	:-----:	 | 	:-----:	 |  
+| 	1	| 	Andrew	|  
+| 	2	| 	Bob	|  
+| 	3	| 	Charlie	| 
+| 	4	| 	David	|  
+
+Login Table 
+
+| 	login_id | 	name	  
+| 	:-----:	 | 	:-----:	 |  
+| 	1	| 	Xavier	|  
+| 	2	| 	Andrew	|  
+| 	3	| 	Yolanda	| 
+| 	4	| 	Bob	|
+
+Result Table - 
+Query - Select * from Registration FULL OUTER JOIN Login ON Registration.name = Login.name
+
+| 	reg_id | 	name	 |  login_id    |   name 
+| 	:-----:	 | 	:-----:	 |  :-----:	    |  :-----:	 |  
+| 	1	| 	Andrew	|   2       |       Andrew      |
+| 	2	| 	Bob	|       4       |       Bob         |
+| 	3	| 	Charlie	|       null       |       null         |
+| 	4	| 	David	|       null       |       null         |
+| 	null	| 	null	|       1       |       Xavier         |
+| 	null	| 	null	|       3       |       Yolanda         |
+
+```
+PostgreSQL, SQL Server, Oracle: You can use the FULL OUTER JOIN directly.
+Select * from Registration FULL OUTER JOIN Login ON Registration.name = Login.name
+```
+
+```
+MySQL: Use the LEFT JOIN and RIGHT JOIN approach.
+
+SELECT * 
+FROM Registration 
+LEFT JOIN Login 
+ON Registration.name = Login.name
+
+UNION
+
+SELECT * 
+FROM Registration 
+RIGHT JOIN Login 
+ON Registration.name = Login.name;
+```
