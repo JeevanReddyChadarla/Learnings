@@ -225,3 +225,23 @@ FROM Registration
 RIGHT JOIN Login 
 ON Registration.name = Login.name;
 ```
+
+### Left Outer Join
+Query - Select * from Registration Left Outer Join Login ON Registration.name = Login.name
+
+| 	reg_id | 	name	  |     login_id    |   name
+| 	:-----:	 | 	:-----:	 |   :-----:	 |  :-----:	  |
+| 	1	| 	Andrew	|   2       |       Andrew      |
+| 	2	| 	Bob	|       4       |       Bob         |
+| 	3	| 	Charlie	|   null    |       null        |
+| 	4	| 	David	|   null    |       null        |
+
+### Right Outer Join
+Query - Select * from Registration Right Outer Join Login On Registration.name = Login.name
+
+| 	reg_id | 	name	 |  login_id    |   name 
+| 	:-----:	 | 	:-----:	 |  :-----:	    |  :-----:	 |  
+| 	1	| 	Andrew	|   2       |       Andrew      |
+| 	2	| 	Bob	|       4       |       Bob         |
+| 	null	| 	null	|       1       |       Xavier         |
+| 	null	| 	null	|       3       |       Yolanda         |
