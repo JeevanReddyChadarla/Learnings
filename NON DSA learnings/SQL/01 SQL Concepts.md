@@ -108,3 +108,53 @@ SOlution : Select product_id, SUM(product_price) from orders_table GROUP BY prod
 Solution : Select product_id, COUNT(product_id) FROM orders_table GROUP BY product_id
                     ^                                                       ^       
                     these two should always be the same (after select and after group by)
+
+## Having
+* Having is used after GROUP BY statement to filter records based on aggregate function(after - SUM, COUNT, AVG, MAX, MIN)
+* Where cannot be used after GROUP BY clause, so instead use HAVING
+
+1. SELECT company, SUM(sales) WHERE company !="Google" GROUP BY company HAVING SUM(sales)>1000
+eg: We are launching a platium service for our most loyal customers. We will assign platinum status to customers that have had 40 or more transaction payments. what customer_ids are eligible for platinum status ?
+Solution : Select customer_ids, COUNT(transactions) FROM payments Group by customer_ids Having COUNT(transactions)>=40
+
+## AS clause 
+* AS clause is used for alias (rename)
+1. Select customer_id, COUNT(*) AS num_of_transactions FROM payments_table
+
+# JOINS 
+1. Inner Joins
+2. Outer Joins
+3. Full Joins 
+4. Unions
+
+- Joins allows us to combine two or more tables together
+
+# Inner Join - 
+Given two tables, Registration table and Login table
+
+Registration Table 
+
+| 	reg_id | 	name	  
+| 	:-----:	 | 	:-----:	 |  
+| 	1	| 	Andrew	|  
+| 	2	| 	Bob	|  
+| 	3	| 	Charlie	| 
+| 	4	| 	David	|  
+
+Login Table 
+
+| 	login_id | 	name	  
+| 	:-----:	 | 	:-----:	 |  
+| 	1	| 	Xavier	|  
+| 	2	| 	Andrew	|  
+| 	3	| 	Yolanda	| 
+| 	4	| 	Bob	|
+
+![alt text](image.png)
+
+Result Table 
+
+| 	reg_id | 	name	 |  login_id    |   name 
+| 	:-----:	 | 	:-----:	 |  :-----:	    |  :-----:	 |  
+| 	1	| 	Andrew	|   2       |       Andrew      |
+| 	2	| 	Bob	|       4       |       Bob         |
